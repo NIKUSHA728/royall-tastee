@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROYAL TASTE</title>
+<link rel="icon" href="https://fav.farm/👑">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#222;background:#fff}
+header{background:#171717;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:26px;font-weight:bold;color:#f5b335}
+nav a{color:white;text-decoration:none;margin:8px}
+.hero{background:linear-gradient(#0008,#0008),url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200') center/cover;text-align:center;color:white;padding:90px 15px}
+.hero h1{font-size:44px}
+.btn{background:#f5b335;color:#171717;border:0;padding:12px 20px;border-radius:7px;font-weight:bold;cursor:pointer}
+section{padding:40px 7%}
+h2{text-align:center;font-size:30px}
+.about{text-align:center;background:#f7f7f7;line-height:1.7}
+.filters{text-align:center;margin:20px}
+.filters button{margin:5px;padding:10px 16px;border:1px solid #f5b335;background:white;border-radius:20px;cursor:pointer}
+.filters button:hover{background:#f5b335}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{border:1px solid #eee;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #0001;background:white}
+.card img{width:100%;height:180px;object-fit:cover}
+.card-content{padding:15px}
+.card h3{margin:5px 0 10px}
+.price{font-size:19px;color:#bd7b00;font-weight:bold}
+.qty-control{display:flex;align-items:center;justify-content:center;gap:16px;margin:15px 0}
+.qty-control button{width:36px;height:36px;border:0;border-radius:50%;background:#f5b335;font-size:23px;cursor:pointer}
+.qty-control span{font-size:19px;font-weight:bold}
+.card .btn{width:100%}
+.cart{background:#171717;color:white;border-radius:12px;padding:25px}
+.cart h2{color:#f5b335}
+.cart-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #555;gap:10px}
+.total{text-align:right;font-size:22px;color:#f5b335;margin-top:20px}
+form{max-width:500px;margin:auto;display:grid;gap:12px}
+input,textarea{padding:13px;border:1px solid #ccc;border-radius:7px}
+footer{background:#171717;color:white;text-align:center;padding:25px}
+footer a{color:#f5b335}
+@media(max-width:600px){
+header{justify-content:center}
+nav{text-align:center}
+.hero h1{font-size:34px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">👑 ROYAL TASTE</div>
+<nav>
+<a href="#home">მთავარი</a>
+<a href="#menu">მენიუ</a>
+<a href="#order">შეკვეთა</a>
+<a href="#contact">კონტაქტი</a>
+</nav>
+</header>
+
+<div class="hero" id="home">
+<h1>ROYAL TASTE</h1>
+<p>გემრიელი მომენტები იწყება აქ!</p>
+<a class="btn" href="#menu">მენიუს ნახვა</a>
+</div>
+
+<section class="about">
+<h2>ჩვენ შესახებ</h2>
+<p><strong>ROYAL TASTE</strong> გთავაზობთ უგემრიელეს ბურგერებს, პიცებს, ფრისა და სასმელებს.</p>
+<p>აირჩიე საყვარელი კერძი და შეუკვეთე მარტივად!</p>
+<hr>
+<p>ხარისხი და გემო ერთ სივრცეში.</p>
+</section>
+
+<section id="menu">
+<h2>ჩვენი მენიუ</h2>
+
+<div class="filters">
+<button onclick="filterMenu('all')">ყველა</button>
+<button onclick="filterMenu('burger')">ბურგერები</button>
+<button onclick="filterMenu('pizza')">პიცა</button>
+<button onclick="filterMenu('fries')">ფრი</button>
+<button onclick="filterMenu('chicken')">ქათამი</button>
+<button onclick="filterMenu('drink')">წვენები და სასმელები</button>
+</div>
+
+<div class="products" id="products"></div>
+</section>
+
+<section>
+<div class="cart">
+<h2>🛒 შენი კალათა</h2>
+<div id="cartItems">კალათა ცარიელია</div>
+<div class="total" id="total">ჯამი: 0 ₾</div>
+</div>
+</section>
+
+<section id="order">
+<h2>შეკვეთის გაფორმება</h2>
+<form onsubmit="placeOrder(event)">
+<input id="customer" placeholder="შენი სახელი" required>
+<input type="tel" placeholder="ტელეფონის ნომერი" required>
+<input type="text" placeholder="მისამართი" required>
+<textarea placeholder="დამატებითი კომენტარი"></textarea>
+<button class="btn" type="submit">შეკვეთის გაგზავნა</button>
+</form>
+<p style="text-align:center">* სასწავლო დემო-საიტი — შეკვეთა რეალურად არ იგზავნება.</p>
+</section>
+
+<section id="contact" style="text-align:center">
+<h2>კონტაქტი</h2>
+<p>📍 თბილისი, საბურთალო</p>
+<p>📞 <a href="tel:+995574151850">+995 574 15 18 50</a></p>
+<p>✉️ <a href="mailto:royaltaste@gmail.com">royaltaste@gmail.com</a></p>
+<p><a href="https://www.google.com/maps" target="_blank">Google Maps</a></p>
+</section>
+
+<footer>
+<p>👑 ROYAL TASTE © 2026</p>
+<p>
+<a href="https://www.facebook.com" target="_blank">Facebook</a> |
+<a href="https://www.instagram.com" target="_blank">Instagram</a>
+</p>
+</footer>
+
+<script>
+const products = [
+{
+name:"კლასიკური ბურგერი",
+category:"burger",
+price:12,
+image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"
+},
+{
+name:"ჩიზბურგერი",
+category:"burger",
+price:14,
+image:"https://images.unsplash.com/photo-1550547660-d9450f859349?w=600"
+},
+{
+name:"ქათმის ბურგერი",
+category:"burger",
+price:13,
+image:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600"
+},
+{
+name:"პეპერონის პიცა",
+category:"pizza",
+price:22,
+image:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600"
+},
+{
+name:"მარგარიტა",
+category:"pizza",
+price:19,
+image:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600"
+},
+{
+name:"ოთხი ყველის პიცა",
+category:"pizza",
+price:25,
+image:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600"
+},
+{
+name:"კლასიკური ფრი",
+category:"fries",
+price:6,
+image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600"
+},
+{
+name:"ქათმის ნაგეთსები",
+category:"chicken",
+price:12,
+image:"https://images.unsplash.com/photo-1562967914-608f82629710?w=600"
+},
+{
+name:"ხრაშუნა ქათამი",
+category:"chicken",
+price:15,
+image:"https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600"
+},
+{
+name:"ფორთოხლის წვენი",
+category:"drink",
+price:5,
+image:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600"
+},
+{
+name:"ლიმონათი",
+category:"drink",
+price:4,
+image:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=600"
+},
+{
+name:"კოლა",
+category:"drink",
+price:3,
+image:"https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600"
+}
+];
+
+let cart=[];
+let quantities={};
+
+function showProducts(category="all"){
+const container=document.getElementById("products");
+container.innerHTML="";
+
+products.forEach((p,i)=>{
+if(category!=="all" && p.category!==category)return;
+
+if(quantities[i]===undefined)quantities[i]=1;
+
+container.innerHTML+=`
+<div class="card">
+<img src="${p.image}" alt="${p.name}"
+onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=ROYAL+TASTE'">
+
+<div class="card-content">
+<h3>${p.name}</h3>
+<p class="price">${p.price} ₾</p>
+
+<div class="qty-control">
+<button onclick="changeQty(${i},-1)">−</button>
+<span id="qty${i}">${quantities[i]}</span>
+<button onclick="changeQty(${i},1)">+</button>
+</div>
+
+<button class="btn" onclick="addToCart(${i})">
+კალათაში დამატება
+</button>
+</div>
+</div>`;
+});
+}
+
+function filterMenu(category){
+showProducts(category);
+}
+
+function changeQty(index,change){
+quantities[index]=Math.max(1,Math.min(99,(quantities[index]||1)+change));
+document.getElementById("qty"+index).textContent=quantities[index];
+}
+
+function addToCart(index){
+let existing=cart.find(item=>item.index===index);
+
+if(existing){
+existing.quantity+=quantities[index];
+}else{
+cart.push({
+index:index,
+quantity:quantities[index]
+});
+}
+updateCart();
+}
+
+function updateCart(){
+const box=document.getElementById("cartItems");
+let total=0;
+
+if(cart.length===0){
+box.innerHTML="კალათა ცარიელია";
+}else{
+box.innerHTML=cart.map(item=>{
+let p=products[item.index];
+let sum=p.price*item.quantity;
+total+=sum;
+
+return `
+<div class="cart-item">
+<span>${p.name} × ${item.quantity}</span>
+<span>${sum} ₾</span>
+</div>`;
+}).join("");
+}
+
+document.getElementById("total").textContent="ჯამი: "+total+" ₾";
+}
+
+function placeOrder(event){
+event.preventDefault();
+
+if(cart.length===0){
+alert("ჯერ დაამატე პროდუქტი კალათაში!");
+return;
+}
+
+alert("მადლობა, "+document.getElementById("customer").value+
+"! ეს დემო შეკვეთაა და რეალურად არ იგზავნება.");
+}
+
+showProducts();
+</script>
+
+</body>
+</html>
